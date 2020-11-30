@@ -4,6 +4,7 @@ import com.sun.istack.internal.Nullable;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
+import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,15 +16,16 @@ public class GenericSample {
 
     public static void main(String[] args) {
 
+        System.out.println(Serializable.class.isAssignableFrom(Class.class));
 
-        Class<?> clazz = GenricSample3.class;
+//        Class<?> clazz = GenricSample3.class;
 //        ClassUtil.println(clazz);
 //        ClassUtil.printlnFields(clazz);
 
-        System.out.println(clazz.getMethods().length);
-        for (Method method : clazz.getMethods()) {
-            ClassUtil.printMethodInfo(method);
-        }
+//        System.out.println(clazz.getMethods().length);
+//        for (Method method : clazz.getMethods()) {
+//            ClassUtil.printMethodInfo(method);
+//        }
 
        // System.out.println(clazz.getDeclaredMethods().length);
     }

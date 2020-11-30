@@ -28,6 +28,7 @@ public class FinalAnatomy {
 
     public static void main(String[] args) {
         FinalAnatomy finalAnatomy = new FinalAnatomy();
+
         Thread writerThread = new Thread(() -> {
             System.out.println("初始化");
             finalAnatomy.writer();

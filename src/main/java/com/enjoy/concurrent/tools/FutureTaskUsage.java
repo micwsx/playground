@@ -2,9 +2,7 @@ package com.enjoy.concurrent.tools;
 
 import com.enjoy.SleepUtil;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
+import java.util.concurrent.*;
 
 /**
  * state状态值是一个volatile修饰，主线程new Thread(FutureTask).start()启动执行run()方法后，主线程执行FutureTask的get()方法获取执行结果。
@@ -13,7 +11,7 @@ import java.util.concurrent.FutureTask;
 public class FutureTaskUsage {
 
     public static void main(String[] args) {
-
+        ExecutorService executorService = Executors.newFixedThreadPool(1);
         Callable<Integer> callable = new Accountant();
         // 封装Callable
         FutureTask<Integer> futureTask = new FutureTask<Integer>(callable);

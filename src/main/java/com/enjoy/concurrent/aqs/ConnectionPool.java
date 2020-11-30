@@ -61,7 +61,7 @@ public class ConnectionPool {
                 long remain = mills;
                 while (pool.isEmpty() && remain >= 0) {
                     try {
-                        pool.wait(mills);
+                        pool.wait(remain);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
