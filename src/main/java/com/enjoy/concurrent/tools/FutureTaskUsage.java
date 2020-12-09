@@ -1,6 +1,7 @@
 package com.enjoy.concurrent.tools;
 
 import com.enjoy.SleepUtil;
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.REUtil;
 
 import java.util.concurrent.*;
 
@@ -30,7 +31,7 @@ public class FutureTaskUsage {
                 boolean cancelled = futureTask.cancel(true);
                 System.out.println("中断执行任务结果: " + cancelled);
                 // 如果被中断，无法通过get()方法获取执行结果。
-               // System.out.println("主线程获得结果为： " + futureTask.get());
+                // System.out.println("主线程获得结果为： " + futureTask.get());
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -40,6 +41,58 @@ public class FutureTaskUsage {
 
     }
 }
+
+
+class AnotherTask implements Runnable {
+
+    private ResultClass result;
+
+    public AnotherTask(ResultClass result) {
+        this.result = result;
+    }
+
+    @Override
+    public void run() {
+        try {
+            TimeUnit.SECONDS.sleep(5);
+            this.result.setResult(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 静态内部类
+     */
+    public static class ResultClass {
+        private Integer result;
+
+        public Integer getResult() {
+            return result;
+        }
+
+        public void setResult(Integer result) {
+            this.result = result;
+        }
+    }
+
+
+    public static void main(String[] args) {
+        ResultClass result = new ResultClass();
+        AnotherTask task = new AnotherTask(result);
+        FutureTask<ResultClass> futureTask = new FutureTask<ResultClass>(task, result);
+        try {
+            new Thread(futureTask).start();
+            ResultClass resultClass = futureTask.get();
+            System.out.println(resultClass.getResult());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
 
 class Accountant implements Callable<Integer> {
 
