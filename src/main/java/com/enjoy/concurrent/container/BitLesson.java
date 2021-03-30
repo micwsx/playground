@@ -1,6 +1,7 @@
 package com.enjoy.concurrent.container;
 
 import java.security.AllPermission;
+import java.util.HashSet;
 
 /**
  * 位运算
@@ -53,6 +54,7 @@ public class BitLesson {
         System.out.println(hasPriviliges(ALLOW_UPDATE)? "拥有ALLOW_UPDATE" : "没有ALLOW_UPDATE");
         // 检查是否没有ALLOW_SELECT
         System.out.println(hasNoPriviliges(ALLOW_SELECT)? "没有ALLOW_SELECT" : "拥有ALLOW_SELECT");
+
 
 
 

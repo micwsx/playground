@@ -16,9 +16,9 @@ public class DelayQueueUsage {
 //        delayQueue.add()
 
         // 5s过期
-        delayQueue.add(new Order<String>(5, "Michael"));
+       // delayQueue.add(new Order<String>(0, "Michael"));
         // 3s过期
-        delayQueue.add(new Order<String>(8, "Jack"));
+        delayQueue.add(new Order<String>(5, "Jack"));
 
         // 开户1个线程
         new Thread(() -> {
@@ -55,6 +55,7 @@ class Order<T> implements Delayed {
     @Override
     public long getDelay(TimeUnit unit) {
         long d = unit.convert(expiryTime - System.currentTimeMillis(), unit);
+        System.out.println(d);
         return d;
     }
 

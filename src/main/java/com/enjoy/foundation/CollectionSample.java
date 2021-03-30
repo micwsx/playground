@@ -1,6 +1,7 @@
 package com.enjoy.foundation;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class CollectionSample {
 
@@ -46,6 +47,7 @@ public class CollectionSample {
 //        Collection list = new LinkedHashSet();
 //        Collection list = new TreeSet();
 //        Collection list = EnumSet.allOf();
+
         list.add("Hello");
         list.add("World");
         list.add("Java");

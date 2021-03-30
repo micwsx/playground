@@ -11,7 +11,6 @@ public class MaxArraySum {
 //        int[] arr = new int[]{2, 1, 5, 8, 4};
 //        int[] arr = new int[]{3, 5, -7, 8, 10};
         int[] arr = new int[]{3, 5, -7, 8, 10};
-
         int i = maxSubsetSum(arr);
         System.out.println(i);
     }
