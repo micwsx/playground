@@ -20,11 +20,11 @@ public class ThreadPoolExecutorUsage {
 
     public static void main(String[] args) {
 
-        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(10,
-                10,
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(2,
+                2,
                 0,
                 TimeUnit.SECONDS,
-                new LinkedBlockingQueue<>(10), new ThreadFactory() {
+                new LinkedBlockingQueue<>(2), new ThreadFactory() {
             private AtomicInteger count = new AtomicInteger(0);
 
             @Override

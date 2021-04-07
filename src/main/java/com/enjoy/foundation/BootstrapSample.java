@@ -1,11 +1,18 @@
 package com.enjoy.foundation;
 
+
+import com.enjoy.foundation.syntax.ClassOperation;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.Enumeration;
 
 public class BootstrapSample {
     public static void main(String[] args) {
+
+        ClassOperation classOperation=new ClassOperation();
+
+
 
         ClassLoader classLoader = ClassLoader.getSystemClassLoader();
         try {

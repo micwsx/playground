@@ -8,9 +8,9 @@ package com.enjoy.designpattern.singleton;
  */
 public class HungrySingleton {
 
-    public static HungrySingleton hungrySingleton = new HungrySingleton();
+    public final static HungrySingleton hungrySingleton = new HungrySingleton();
 
-    public static HungrySingleton getInstance() {
+    public final static HungrySingleton getInstance() {
         return hungrySingleton;
     }
 

@@ -1,6 +1,7 @@
 package com.enjoy.algorithm.problems;
 
 import java.util.*;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @Author wu
@@ -13,7 +14,9 @@ public class SymmetricString {
 
     public static void main(String[] args) {
 
+        String regex="[0-9]/d";
         getLongestSubString();
+
 
 //        int[] coins = {1, 2, 7, 8, 12};
 //        int money = 15;

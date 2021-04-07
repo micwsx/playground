@@ -7,9 +7,9 @@ import java.util.concurrent.*;
 
 /**
  * 使用线程池原因：
- *  1。减少线程创建从而减少资源消耗
- *  2。提高响应速度（创建->运行->消毁。直接从线程池中拿线程运行任务）
- *  3。提高线程的可管理性
+ * 1。减少线程创建从而减少资源消耗
+ * 2。提高响应速度（创建->运行->消毁。直接从线程池中拿线程运行任务）
+ * 3。提高线程的可管理性
  * FixedThreadPool: 使用默认DefaultThreadFactory和默认AbortPolicy
  * new new ThreadPoolExecutor(
  * corePoolSize: nThreads
@@ -24,10 +24,14 @@ public class FixedThreadPoolUsage {
 
     public static void main(String[] args) {
 
+        ExecutorService executorService1 = Executors.newFixedThreadPool(1);
+
+
+
         ExecutorService executorService = Executors.newFixedThreadPool(10);
 
-//        executorService = Executors.newSingleThreadExecutor();
-//        executorService = Executors.newCachedThreadPool();
+        executorService = Executors.newSingleThreadExecutor();
+        executorService = Executors.newCachedThreadPool();
         // 守线工作线程（主程序结束后，工作线程直接结束）
 //        executorService = Executors.newWorkStealingPool();
 

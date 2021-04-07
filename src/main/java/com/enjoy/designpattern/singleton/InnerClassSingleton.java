@@ -16,7 +16,6 @@ public class InnerClassSingleton {
 
     public static void main(String[] args) {
         InnerClassSingleton instance = InnerClassSingleton.getInstance();
-
     }
 
 }
