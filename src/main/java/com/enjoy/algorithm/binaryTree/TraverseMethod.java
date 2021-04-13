@@ -21,49 +21,43 @@ public class TraverseMethod {
 
     // 前序遍历-根结点,左结点,右结点. ABCDEFGHK
     public static void beforeTraverse(Node root) {
-        subBeforeTraverse(root);
-    }
-
-    private static void subBeforeTraverse(Node root) {
         // 先打印根结点
         System.out.print(root.getData() + ",");
         // 再左结点
         if (root.getLeft() != null)
-            subBeforeTraverse(root.getLeft());
+            beforeTraverse(root.getLeft());
         if (root.getRight() != null)
-            subBeforeTraverse(root.getRight());
+            beforeTraverse(root.getRight());
     }
+
 
 
     // 中序遍历-左结点,根结点,右结点. BDCAEHGKF
     public static void middleTraverse(Node root) {
-        subMiddleTraverse(root);
-    }
-
-    private static void subMiddleTraverse(Node root) {
         // 先左结点
         if (root.getLeft() != null)
-            subMiddleTraverse(root.getLeft());
+            middleTraverse(root.getLeft());
         // 再根结点
         System.out.print(root.getData() + ",");
         // 最后右结点
         if (root.getRight() != null)
-            subMiddleTraverse(root.getRight());
+            middleTraverse(root.getRight());
     }
+
+
 
     // 后序遍历-左结点,右结点,根结点. DCBHKGFEA
     public static void afterTraverse(Node root) {
-        subAfterTraverse(root);
-    }
-
-    private static void subAfterTraverse(Node root) {
         // 先左结点
         if (root.getLeft() != null)
-            subAfterTraverse(root.getLeft());
+            afterTraverse(root.getLeft());
         // 再右结点
         if (root.getRight() != null)
-            subAfterTraverse(root.getRight());
+            afterTraverse(root.getRight());
         // 最后根结点
         System.out.print(root.getData() + ",");
     }
+
+
+
 }
