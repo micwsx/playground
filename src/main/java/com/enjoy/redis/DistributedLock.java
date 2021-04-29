@@ -86,6 +86,7 @@ public class DistributedLock implements Lock {
                 // set key
                 jedis = jedisPool.getResource();
                 String lockValue = UUID.randomUUID().toString();
+
                 String result = jedis.set(LOCKER_NAME, lockValue, "NX", "PX", unit.toMillis(time));
                 if (result.equalsIgnoreCase("OK")) {
                     //  success

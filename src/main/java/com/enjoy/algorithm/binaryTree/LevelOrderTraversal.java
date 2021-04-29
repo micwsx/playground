@@ -16,7 +16,7 @@ public class LevelOrderTraversal {
     private static void levelOrderTraverse(Node treeNode) {
         // 连接队列顺序结构
         LinkedList<Node> queue = new LinkedList<>();
-        // 加入queue尾部
+        // 加入queue尾部保证先进先出
         queue.offer(treeNode);
         while (!queue.isEmpty()) {
             // 从头取出并移除元素

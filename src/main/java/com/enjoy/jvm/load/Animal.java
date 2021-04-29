@@ -18,10 +18,21 @@ public class Animal {
     }
 
     public static void main(String[] args) {
-        // 父类静态代码会执行，但不会执行初始化动作
+
+        try {
+            // 会触发Animal静态代码块方法
+            Class<?> aClass = Class.forName("com.enjoy.jvm.load.Animal");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+        // 只执行父类静态代码会执行
 //        System.out.println(Gorilla.name);
-        System.out.println(Gorilla.weight);
-//        System.out.println(Gorilla.height);
+        // 只执行父类静态代码块
+//        System.out.println(Gorilla.weight);
+        // 只执行父类和子类静态代码块
+        System.out.println(Gorilla.height);
     }
 }
 
