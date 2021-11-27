@@ -1,15 +1,9 @@
 package com.enjoy.concurrent.aqs;
 
 import com.enjoy.SleepUtil;
-import sun.misc.Unsafe;
-
-import java.util.Queue;
 import java.util.Random;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.locks.AbstractQueuedSynchronizer;
-import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.LockSupport;
 
 /**

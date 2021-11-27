@@ -15,7 +15,7 @@ public class Quick {
 
 
     private static int partition(int[] array) {
-
+        return 0;
     }
 
     private static void swap(int[] array, int i, int j) {

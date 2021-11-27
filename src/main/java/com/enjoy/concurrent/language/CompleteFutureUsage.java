@@ -1,8 +1,6 @@
 package com.enjoy.concurrent.language;
 
 import com.enjoy.SleepUtil;
-import com.sun.xml.internal.ws.util.CompletedFuture;
-
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;

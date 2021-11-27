@@ -1,10 +1,5 @@
 package com.enjoy.algorithm.practice;
 
-import sun.misc.JavaAWTAccess;
-
-import java.util.Arrays;
-import java.util.Collections;
-
 /**
  * @Author wu
  * @Date 3/28/2021 6:27 PM

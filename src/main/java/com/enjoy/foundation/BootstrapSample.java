@@ -4,7 +4,6 @@ package com.enjoy.foundation;
 import com.enjoy.foundation.syntax.ClassOperation;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.Enumeration;
 
