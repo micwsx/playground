@@ -1,13 +1,21 @@
 package com.enjoy.foundation;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * 反射获取泛型类信息
+ * <？ extends Fruit> 上界通配符（Upper Bounds Wildcards)
+ * <？ super Fruit> 下界通配符（Lower Bounds Wildcards)
  */
 public class GenericSample {
+
+    public static <T> void test(T t){
+        T[] array=(T[])Array.newInstance(t.getClass().getComponentType(),1);
+        System.out.println(array);
+    }
 
     public static void main(String[] args) {
 
@@ -44,7 +52,7 @@ public class GenericSample {
         }
     }
 
-    public static class GenricSample3<K, V> extends Base implements Cloneable  {
+    public static class GenricSample3<K extends Object, V extends Object> extends Base implements Cloneable  {
 
         public GenricSample3() {
         }
@@ -54,6 +62,8 @@ public class GenericSample {
         }
 
         private Map<K, V> map = new HashMap<>();
+
+        public K[] array=(K[])new Object[10];
 
 
         public Map<K, V> getMap() {
@@ -91,7 +101,6 @@ public class GenericSample {
 
         void run();
     }
-
 
     public class Dog implements Behavior {
         private String name;
@@ -144,5 +153,7 @@ public class GenericSample {
             super.run();
         }
     }
+
+
 
 }

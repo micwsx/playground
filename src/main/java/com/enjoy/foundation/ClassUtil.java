@@ -1,6 +1,6 @@
 package com.enjoy.foundation;
 
-import com.sun.istack.internal.Nullable;
+//import com.sun.istack.internal.Nullable;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -98,14 +98,14 @@ public abstract class ClassUtil {
 
         stringBuilder.append("----------------------------注解-----------------------------------\r\n");
         //annotation
-        stringBuilder.append("getAnnotation(Nullable.class): " + clazz.getAnnotation(Nullable.class)).append("\r\n");
+//        stringBuilder.append("getAnnotation(Nullable.class): " + clazz.getAnnotation(Nullable.class)).append("\r\n");
         stringBuilder.append("getAnnotations().length: " + clazz.getAnnotations().length).append("\r\n");
         stringBuilder.append("getDeclaredAnnotations().length: " + clazz.getDeclaredAnnotations().length).append("\r\n");
         stringBuilder.append("getAnnotatedInterfaces().length: " + clazz.getAnnotatedInterfaces().length).append("\r\n");
         stringBuilder.append("getAnnotatedSuperclass(): " + clazz.getAnnotatedSuperclass()).append("\r\n");
-        stringBuilder.append("getDeclaredAnnotation(Nullable.class): " + clazz.getDeclaredAnnotation(Nullable.class)).append("\r\n");
+//        stringBuilder.append("getDeclaredAnnotation(Nullable.class): " + clazz.getDeclaredAnnotation(Nullable.class)).append("\r\n");
         stringBuilder.append("isAnnotation(): " + clazz.isAnnotation()).append("\r\n");
-        stringBuilder.append("isAnnotationPresent(Nullable.class): " + clazz.isAnnotationPresent(Nullable.class)).append("\r\n");
+//        stringBuilder.append("isAnnotationPresent(Nullable.class): " + clazz.isAnnotationPresent(Nullable.class)).append("\r\n");
 
         try {
             stringBuilder.append("----------------------------字段-----------------------------------\r\n");
@@ -192,7 +192,7 @@ public abstract class ClassUtil {
             if (obj != null) {
                 System.out.println("-------------字段" + field.getName() + "指定对象数据---------------");
                 stringBuilder.append("field.get(obj): " + field.get(obj)).append("\r\n");
-                stringBuilder.append("field.getAnnotation(Nullable.class): " + field.getAnnotation(Nullable.class)).append("\r\n");
+//                stringBuilder.append("field.getAnnotation(Nullable.class): " + field.getAnnotation(Nullable.class)).append("\r\n");
                 stringBuilder.append("field.getBoolean(obj): " + field.getBoolean(obj)).append("\r\n");
                 stringBuilder.append("field.getByte(obj): " + field.getByte(obj)).append("\r\n");
                 stringBuilder.append("field.getChar(obj): " + field.getChar(obj)).append("\r\n");
@@ -218,7 +218,7 @@ public abstract class ClassUtil {
     public static void printMethodInfo(Method method) {
         try {
             System.out.println("-------------方法" + method.getName() + "---------------");
-            stringBuilder.append("getAnnotation(Nullable.class): " + method.getAnnotation(Nullable.class)).append("\r\n");
+//            stringBuilder.append("getAnnotation(Nullable.class): " + method.getAnnotation(Nullable.class)).append("\r\n");
             stringBuilder.append("getDeclaredAnnotations().length: " + method.getDeclaredAnnotations().length).append("\r\n");
             stringBuilder.append("getDeclaringClass(): " + method.getDeclaringClass()).append("\r\n");
             stringBuilder.append("getDefaultValue(): " + method.getDefaultValue()).append("\r\n");
