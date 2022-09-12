@@ -23,7 +23,7 @@ public class RattleSnake implements Runnable{
         thread.setDaemon(true);
         thread.start();
 
-        //thread.join();
+        thread.join();
         System.out.println("Main End");
 
     }

@@ -6,6 +6,8 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author: Michael
  * @date: 1/22/2022 8:16 PM
+ *
+ * -XX:+PrintGCDetails -Xms90M -Xmx90M -XX:-UseAdaptiveSizePolicy -XX:SurvivorRatio=8
  */
 public class HeapTest {
 
@@ -15,7 +17,7 @@ public class HeapTest {
         ArrayList<HeapTest> arrayList=new ArrayList<>();
         while (true) {
             arrayList.add(new HeapTest());
-            TimeUnit.SECONDS.sleep(10);
+            TimeUnit.MILLISECONDS.sleep(700);
         }
     }
 }

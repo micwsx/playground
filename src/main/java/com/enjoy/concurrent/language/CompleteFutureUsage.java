@@ -30,12 +30,12 @@ public class CompleteFutureUsage {
     }
 
     public static void main(String[] args) {
-        thenAccept();
+//        thenAccept();
 //        runAfterBothAsync();
 //        handle();
 //        allOf();
 //        getAndJoin();
-//        basicUsage();
+        basicUsage();
     }
 
     private static void thenAccept() {
@@ -166,7 +166,7 @@ public class CompleteFutureUsage {
 
         System.out.println("Sleeping 2s...");
         SleepUtil.sleep(2000);
-//        completableFuture.complete(100);
-        completableFuture.completeExceptionally(new Exception());
+        completableFuture.complete(100);
+//        completableFuture.completeExceptionally(new Exception());
     }
 }
