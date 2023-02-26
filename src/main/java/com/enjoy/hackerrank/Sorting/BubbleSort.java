@@ -11,7 +11,10 @@ public class BubbleSort {
     public static void main(String[] args) {
 
         int[] a = {1, 4, 5, 6, 2};
-        countSwaps(a);
+        bubbleSort(a);
+//        bubbleSort3(a);
+        System.out.println(Arrays.toString(a));
+//        countSwaps(a);
     }
 
     static void countSwaps2(int[] a) {
@@ -48,7 +51,43 @@ public class BubbleSort {
                 }
             }
         }
-        System.out.println(String.format("Array is sorted in %d swaps.%nFirst Element: %d%nLast Element: %d%n",cout,a[0],a[a.length - 1]));
+        System.out.println(String.format("Array is sorted in %d swaps.%nFirst Element: %d%nLast Element: %d%n", cout, a[0], a[a.length - 1]));
+    }
+
+    // int[] a = { 1,4, 5, 6, 2};
+    static void bubbleSort(int[] array) {
+        if (array == null) return;
+        for (int i = 0; i <= array.length - 1; i++) {
+            for (int j = array.length - 1; j >= i; j--) {
+                if (array[j] < array[i]) {
+                    int tmp = array[i];
+                    array[i] = array[j];
+                    array[j] = tmp;
+                    System.out.println(Arrays.toString(array));
+                }
+            }
+        }
+    }
+
+    public static void bubbleSort3(int[] arr) {
+        if (arr == null) {
+            return;
+        }
+        boolean flag;
+        for (int i = arr.length - 1; i > 0; i--) {
+            flag = false;
+            for (int j = 0; j < i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int tmp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = tmp;
+                    flag = true;
+                }
+            }
+            if (!flag) {
+                return;
+            }
+        }
     }
 
 

@@ -13,8 +13,10 @@ public class HeapSort  {
 
 
     public static void main(String[] args) {
+        int[] array = new int[]{1, 3, 4, 5, 7, 8};
+//        array=new int[]{1, 4, 2, 3, 7, 5,6}
         HeapSort heapSort = new HeapSort();
-        int[] sort = heapSort.sort(new int[]{1, 4, 2, 3, 7, 5,6});
+        int[] sort = heapSort.sort(array);
 //        int[] sort = heapSort.sort(new int[]{0, 1, 2, 3, 4, 5, 6, 7});
         System.out.println(Arrays.toString(sort));
 
