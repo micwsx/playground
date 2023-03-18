@@ -16,9 +16,44 @@ public class FutureTaskDemo {
 
     private static final Logger logger= LoggerFactory.getLogger(FutureTaskDemo.class);
 
-    private static ExecutorService executorService = new ThreadPoolExecutor(1, 2,
+    private static class MyThreadPool extends ThreadPoolExecutor{
+
+        public MyThreadPool(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<Runnable> workQueue) {
+            super(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue);
+        }
+
+        public MyThreadPool(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<Runnable> workQueue, ThreadFactory threadFactory) {
+            super(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue, threadFactory);
+        }
+
+        public MyThreadPool(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<Runnable> workQueue, RejectedExecutionHandler handler) {
+            super(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue, handler);
+        }
+
+        public MyThreadPool(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<Runnable> workQueue, ThreadFactory threadFactory, RejectedExecutionHandler handler) {
+            super(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue, threadFactory, handler);
+        }
+
+        @Override
+        protected void afterExecute(Runnable r, Throwable t) {
+            if (t!=null){
+                logger.error("afterExecute",r,t);
+            }else {
+                logger.info("{},{}",r,t);
+            }
+        }
+    }
+
+
+
+
+    private static ExecutorService executorService = new MyThreadPool(1, 2,
             0L, TimeUnit.MILLISECONDS,
             new LinkedBlockingQueue<Runnable>());
+
+//    private static ExecutorService executorService = new ThreadPoolExecutor(1, 2,
+//            0L, TimeUnit.MILLISECONDS,
+//            new LinkedBlockingQueue<Runnable>());
 
     public static void main(String[] args) {
 
@@ -30,9 +65,17 @@ public class FutureTaskDemo {
         Future<String> future = FutureTaskDemo.executorService.submit(new Callable<String>() {
             @Override
             public String call() throws Exception {
+                try {
 //                TimeUnit.SECONDS.sleep(5);
-                while (!Thread.currentThread().isInterrupted()) {
-                   logger.info("calculating...");
+//                while (!Thread.currentThread().isInterrupted()) {
+//                    while (!Thread.interrupted()) {
+                    while (true&&!Thread.interrupted()) {
+    //                    throw new Exception("my error");
+                       logger.info("calculating...");
+                    }
+                    logger.info("dddddddddddd dddddd");
+                } finally {
+                    logger.info("task finally");
                 }
                 return "task finished.";
             }
@@ -62,40 +105,40 @@ public class FutureTaskDemo {
         } catch (ExecutionException e) {
             logger.error("ExecutionException",e);
         }
-        printPoolInfo(executorService);
-
-
-        logger.info("------execute 2 task.------");
-        List<Future<String>> list=new ArrayList<>();
-
-        list.add(FutureTaskDemo.executorService.submit(new Callable<String>() {
-            @Override
-            public String call() throws Exception {
-                TimeUnit.SECONDS.sleep(5);
-                return "task1 finished.";
-            }
-        }));
-
-        list.add(FutureTaskDemo.executorService.submit(new Callable<String>() {
-            @Override
-            public String call() throws Exception {
-                TimeUnit.SECONDS.sleep(5);
-                return "task2 finished.";
-            }
-        }));
-
-        printPoolInfo(executorService);
-        for (Future<String> stringFuture : list) {
-            try {
-                logger.info(stringFuture.get());
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            }
-        }
-        logger.info("------------");
-        printPoolInfo(executorService);
+//        printPoolInfo(executorService);
+//
+//
+//        logger.info("------execute 2 task.------");
+//        List<Future<String>> list=new ArrayList<>();
+//
+//        list.add(FutureTaskDemo.executorService.submit(new Callable<String>() {
+//            @Override
+//            public String call() throws Exception {
+//                TimeUnit.SECONDS.sleep(5);
+//                return "task1 finished.";
+//            }
+//        }));
+//
+//        list.add(FutureTaskDemo.executorService.submit(new Callable<String>() {
+//            @Override
+//            public String call() throws Exception {
+//                TimeUnit.SECONDS.sleep(5);
+//                return "task2 finished.";
+//            }
+//        }));
+//
+//        printPoolInfo(executorService);
+//        for (Future<String> stringFuture : list) {
+//            try {
+//                logger.info(stringFuture.get());
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            } catch (ExecutionException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        logger.info("------------");
+//        printPoolInfo(executorService);
     }
 
     private static void printPoolInfo(ThreadPoolExecutor executorService) {
